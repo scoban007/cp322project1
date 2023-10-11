@@ -75,21 +75,6 @@ class KNN:
 
 
 
-split_ratio = 0.8
-X_train, y_train, X_test, y_test = KNN.train_test_split(X, y, split_ratio)
-
-# Set the value of K (you can change this to experiment)
-k = 3
-
-# Make predictions using the KNN algorithm
-y_pred = KNN.knn(X_train, y_train, X_test, k)
-
-# Calculate and print the accuracy
-correct_predictions = sum(1 for true, pred in zip(y_test, y_pred) if true == pred)
-accuracy = correct_predictions / len(y_test)
-print(f"Accuracy of KNN with k={k}: {accuracy:.2f}")
-
-
 
 
 
