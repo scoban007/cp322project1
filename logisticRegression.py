@@ -63,3 +63,13 @@ def fit(xFeature, yList, learningRate, iterations):
     plt.show()
 
     return bestParams[1], bestParams[2]
+
+def predict(w, b, xFeature):
+    # calculates probability of the positive class 
+    probability = 1 / (1 + np.exp(-(w * xFeature + b)))
+
+    # return class prediction 0 or 1 based on a threshold
+    if probability >= 0.5:
+        return 1
+    else:
+        return 0
