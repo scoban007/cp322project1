@@ -2,7 +2,7 @@ from ucimlrepo import fetch_ucirepo
 import matplotlib.pyplot as plt
 import numpy as np
 import math
-from logisticRegression import fit
+import logisticRegression
 
 # fetch dataset 
 ionosphere = fetch_ucirepo(id=52) 
@@ -35,4 +35,8 @@ for j in yArray:
     else:
         yList.append(0)
 
-w, b = fit(xFeature, yList, 0.01, 600)
+w, b = logisticRegression.fit(xFeature, yList, 0.01, 600)
+
+print("Accuracy is {:.2f} %\n".format(logisticRegression.evaluate_acc(w, b, xFeature, yList, 350)))
+print("\nAverage accuracy is {:.2f} % with k-fold".format(logisticRegression.kfold(7, w, b, xFeature, yList)))
+

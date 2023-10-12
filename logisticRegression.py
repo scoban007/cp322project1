@@ -20,7 +20,7 @@ def fit(xFeature, yList, learningRate, iterations):
     params = []
 
     xrange = np.array(xFeature)
-    logReg = 1/(1 + np.exp(-(xrange)))
+    #logReg = 1/(1 + np.exp(-(xrange)))
 
     temp_w = 0
     temp_b = 0
@@ -46,8 +46,8 @@ def fit(xFeature, yList, learningRate, iterations):
 
         #print("J({}, {}): {}".format(temp_w, temp_b, cost))
         #print("{} : {}".format(wScaled, cost))
-        plt.scatter(w, cost, color="green")
-    plt.show()
+    #     plt.scatter(w, cost, color="green")
+    # plt.show()
 
     min = params[0][0]
     for vals in params:
@@ -55,12 +55,12 @@ def fit(xFeature, yList, learningRate, iterations):
             min = vals[0]
             bestParams = vals
 
-    print(bestParams)
-    logReg = 1/(1 + np.exp(-(bestParams[1]*xrange + bestParams[2])))
-    plt.scatter(xFeature, yList, color="red")
-    plt.scatter(xrange, logReg, color="blue")
-    #plt.scatter(xrange, 1/(1 + np.exp(-(1*xrange + 0))), color="green")
-    plt.show()
+    #print(bestParams)
+    # logReg = 1/(1 + np.exp(-(bestParams[1]*xrange + bestParams[2])))
+    # # plt.scatter(xFeature, yList, color="red")
+    # # plt.scatter(xrange, logReg, color="blue")
+    # # #plt.scatter(xrange, 1/(1 + np.exp(-(1*xrange + 0))), color="green")
+    # # plt.show()
 
     return bestParams[1], bestParams[2]
 
@@ -73,3 +73,35 @@ def predict(w, b, xFeature):
         return 1
     else:
         return 0
+
+def evaluate_acc(w, b, xList, yList, sampleSize):
+
+    accuracy = 0
+
+    for i in range(sampleSize):
+        if predict(w, b, xList[i]) == yList[i]:
+            accuracy += 1
+    
+    return 100 * accuracy / sampleSize
+
+def kfold(k, w, b, xList, yList):
+
+    kSize = len(xList) // k
+    avgAcc = 0
+
+    for i in range(k):
+
+        startIndex = i*kSize
+        endIndex = (i+1)*kSize
+
+        testingSet_x = xList[startIndex:endIndex]
+        testingSet_y = yList[startIndex:endIndex]
+        trainingSet_x = xList[0:startIndex] + xList[endIndex:]
+        trainingSet_y = yList[0:startIndex] + yList[endIndex:]
+
+        w,b = fit(trainingSet_x, trainingSet_y, 0.01, 600)
+        print("Accuracy for fold #{} is {:.2f} %".format(i+1, evaluate_acc(w, b, testingSet_x, testingSet_y, len(testingSet_x))))
+
+        avgAcc += evaluate_acc(w, b, testingSet_x, testingSet_y, len(testingSet_x))
+
+    return avgAcc / k
