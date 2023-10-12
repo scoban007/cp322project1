@@ -62,4 +62,4 @@ def fit(xFeature, yList, learningRate, iterations):
     #plt.scatter(xrange, 1/(1 + np.exp(-(1*xrange + 0))), color="green")
     plt.show()
 
-    return bestParams
+    return bestParams[1], bestParams[2]

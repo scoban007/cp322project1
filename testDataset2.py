@@ -37,4 +37,4 @@ for j in range(250):
         yList.append(1)
 
 print(len(xFeature))
-bestParams = fit(xFeature, yList, 0.004, 400)
+w, b = fit(xFeature, yList, 0.004, 400)
