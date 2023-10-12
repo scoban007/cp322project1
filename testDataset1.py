@@ -35,4 +35,4 @@ for j in yArray:
     else:
         yList.append(0)
 
-bestParams = fit(xFeature, yList, 0.004, 500)
+bestParams = fit(xFeature, yList, 0.01, 600)
