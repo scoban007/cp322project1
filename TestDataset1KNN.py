@@ -13,7 +13,7 @@ yArray = np.array(y)
 yList = []
 xTest = []
 
-xTest = xArray[0:5]
+xTest = xArray[0:5] #define k as 5
 
 for j in yArray:
     if j == "g":
@@ -21,8 +21,8 @@ for j in yArray:
     else:
         yList.append(0)
 
-sd = KNN.predicts(xArray, yList, xTest, 5)
+sd = KNN.predicts(xArray, yList, xTest, 5) 
 #print(sd)
-temp_sd = KNN.temp_predicts(xArray, yList, xTest, 5)
-print(temp_sd)
-print(KNN.evaluate_acc(temp_sd, yList[:5]))
+temp_sd = KNN.temp_predicts(xArray, yList, xTest, 5) #need all of the predictions until k to compare and get accuracy
+#print(temp_sd)
+#print(KNN.evaluate_acc(temp_sd, yList[:5]))
