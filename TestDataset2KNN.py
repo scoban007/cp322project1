@@ -16,7 +16,7 @@ xTest = []
 
 
 for i in range(250):
-    xFeature.append(xArray[i][10])
+    xFeature.append(xArray[i][10]) #only considered capital gain/loss and hours per week
     xFeature.append(xArray[i][11])
     xFeature.append(xArray[i][12])
 
@@ -36,5 +36,5 @@ for j in range(250):
 sd = KNN.predicts(xFeature, yList, xTest, 5)
 #print(sd)
 temp_sd = KNN.temp_predicts(xFeature, yList, xTest, 5)
-print(temp_sd)
-print(KNN.evaluate_acc(temp_sd, yList[:5]))
+#print(temp_sd)
+#print(KNN.evaluate_acc(temp_sd, yList[:5]))
