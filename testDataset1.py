@@ -10,8 +10,6 @@ ionosphere = fetch_ucirepo(id=52)
 # data (as pandas dataframes) 
 x = ionosphere.data.features 
 y = ionosphere.data.targets 
-print(y)
-print(x)
 # metadata 
 # print(ionosphere.metadata) 
   
@@ -37,6 +35,5 @@ for j in yArray:
 
 w, b = logisticRegression.fit(xFeature, yList, 0.01, 600)
 
-print("Accuracy is {:.2f} %\n".format(logisticRegression.evaluate_acc(w, b, xFeature, yList, 350)))
-print("\nAverage accuracy is {:.2f} % with k-fold".format(logisticRegression.kfold(7, w, b, xFeature, yList)))
+print("\nAverage accuracy is {:.2f} % with k-fold".format(logisticRegression.kfold(5, w, b, xFeature, yList)))
 
