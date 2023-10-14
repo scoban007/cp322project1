@@ -33,9 +33,6 @@ def fit(xFeature, yList, learningRate, iterations):
             grad_b += grad_desc_b(temp_w, xFeature[i], temp_b, yList[i])
         temp_w = temp_w - learningRate*grad_w/len(xFeature)
         temp_b = temp_b - learningRate*grad_b/len(xFeature)
-
-        #print("J({}, {}): {}, {}".format(wScaled, b, temp_w, temp_b))
-        #plt.scatter(xrange, 1/(1 + np.exp(-(temp_w*xrange+temp_b))))
     
         cost = 0
         for j in range(len(xFeature)):
@@ -44,23 +41,12 @@ def fit(xFeature, yList, learningRate, iterations):
         
         params.append([cost, temp_w, temp_b])
 
-        #print("J({}, {}): {}".format(temp_w, temp_b, cost))
-        #print("{} : {}".format(wScaled, cost))
-    #     plt.scatter(w, cost, color="green")
-    # plt.show()
 
     min = params[0][0]
     for vals in params:
         if vals[0] < min:
             min = vals[0]
             bestParams = vals
-
-    #print(bestParams)
-    # logReg = 1/(1 + np.exp(-(bestParams[1]*xrange + bestParams[2])))
-    # # plt.scatter(xFeature, yList, color="red")
-    # # plt.scatter(xrange, logReg, color="blue")
-    # # #plt.scatter(xrange, 1/(1 + np.exp(-(1*xrange + 0))), color="green")
-    # # plt.show()
 
     return bestParams[1], bestParams[2]
 
