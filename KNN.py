@@ -66,7 +66,7 @@ class KNN:
                 sumAll += 1            
         return sumAll/len(y_test)
     
-    def kfold(xList, yList, ksize, k): #its not working :'DDDDDDDD
+    def kfold(xList, yList, ksize, k):
         kSize = len(xList) // ksize
         avgAcc = 0
         predictions = []
@@ -86,3 +86,54 @@ class KNN:
             avgAcc += KNN.evaluate_acc(predictions, testingSet_y)
 
         return avgAcc / k
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
