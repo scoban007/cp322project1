@@ -13,14 +13,13 @@ y = ionosphere.data.targets
 
 class KNN:
 
-    def __init__(self, K):
-        self.K = K          #define k
+    def __init__(self):
         self.xArray = np.array(X)
         self.yArray = np.array(y)
         return
     
-    def fit(self, points):
-        self.points = points #we dont need much for fit
+    def fit(self, k):
+        self.k = k #we dont need much for fit
 
     def euclidean (p , q):
         return np.sqrt((np.sum(np.array(p) - np.array(q)) ** 2)) #euclidean for finding distance between every point in p and q.
@@ -66,3 +65,24 @@ class KNN:
             if predictions[i] == y_test[i]:
                 sumAll += 1            
         return sumAll/len(y_test)
+    
+    def kfold(xList, yList, ksize, k): #its not working :'DDDDDDDD
+        kSize = len(xList) // ksize
+        avgAcc = 0
+        predictions = []
+
+        for i in range(kSize - 1):
+
+            startIndex = i*kSize
+            endIndex = (i+1)*kSize
+            print(endIndex)
+
+            testingSet_x = xList[startIndex:endIndex]
+            testingSet_y = yList[startIndex:endIndex]
+            print(testingSet_y)
+
+            predictions.append(KNN.predicts(xList, testingSet_y, testingSet_x, k))
+            print(predictions)
+            avgAcc += KNN.evaluate_acc(predictions, testingSet_y)
+
+        return avgAcc / k
