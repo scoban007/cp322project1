@@ -2,7 +2,7 @@ from ucimlrepo import fetch_ucirepo
 import matplotlib.pyplot as plt
 import numpy as np
 import math
-from logisticRegression import fit
+import logisticRegression
 
 # fetch dataset 
 adult = fetch_ucirepo(id=2) 
@@ -23,7 +23,7 @@ yArray = np.array(y)
 xFeature = []
 yList = []
 
-for i in range(250):
+for i in range(250):    #dataset is huge (50k entries), only picked first 250
     totalAttr = 0
     totalAttr += xArray[i][0] / 75
     totalAttr += xArray[i][2] / 450000
@@ -36,5 +36,8 @@ for j in range(250):
     else:
         yList.append(1)
 
-print(len(xFeature))
-w, b = fit(xFeature, yList, 0.004, 400)
+learningRate = 0.01
+iterations = 500
+
+w, b = logisticRegression.fit(xFeature, yList, learningRate, iterations)
+print("\nAverage accuracy is {:.2f} % with k-fold".format(logisticRegression.kfold(5, w, b, xFeature, yList, learningRate, iterations)))

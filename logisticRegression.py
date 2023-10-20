@@ -47,6 +47,9 @@ def fit(xFeature, yList, learningRate, iterations):
         #print("J({}, {}): {}".format(temp_w, temp_b, cost))
         #print("{} : {}".format(wScaled, cost))
     #     plt.scatter(w, cost, color="green")
+    # plt.title("Gradient descent")
+    # plt.xlabel("Iterations")
+    # plt.ylabel("Cost J(w,b)")
     # plt.show()
 
     min = params[0][0]
@@ -56,11 +59,14 @@ def fit(xFeature, yList, learningRate, iterations):
             bestParams = vals
 
     #print(bestParams)
-    # logReg = 1/(1 + np.exp(-(bestParams[1]*xrange + bestParams[2])))
-    # # plt.scatter(xFeature, yList, color="red")
-    # # plt.scatter(xrange, logReg, color="blue")
-    # # #plt.scatter(xrange, 1/(1 + np.exp(-(1*xrange + 0))), color="green")
-    # # plt.show()
+    logReg = 1/(1 + np.exp(-(bestParams[1]*xrange + bestParams[2])))
+    # plt.scatter(xFeature, yList, color="red")
+    # plt.scatter(xrange, logReg, color="blue")
+    # plt.scatter(xrange, 1/(1 + np.exp(-(1*xrange + 0))), color="green")
+    # plt.title("Fitted logistic regression model")
+    # plt.xlabel("X")
+    # plt.ylabel("Y")
+    # plt.show()
 
     return bestParams[1], bestParams[2]
 
@@ -84,7 +90,7 @@ def evaluate_acc(w, b, xList, yList, sampleSize):
     
     return 100 * accuracy / sampleSize
 
-def kfold(k, w, b, xList, yList):
+def kfold(k, w, b, xList, yList, learningRate, iterations):
 
     kSize = len(xList) // k
     avgAcc = 0
@@ -99,7 +105,7 @@ def kfold(k, w, b, xList, yList):
         trainingSet_x = xList[0:startIndex] + xList[endIndex:]
         trainingSet_y = yList[0:startIndex] + yList[endIndex:]
 
-        w,b = fit(trainingSet_x, trainingSet_y, 0.01, 600)
+        w,b = fit(trainingSet_x, trainingSet_y, learningRate, iterations)
         print("Accuracy for fold #{} is {:.2f} %".format(i+1, evaluate_acc(w, b, testingSet_x, testingSet_y, len(testingSet_x))))
 
         avgAcc += evaluate_acc(w, b, testingSet_x, testingSet_y, len(testingSet_x))

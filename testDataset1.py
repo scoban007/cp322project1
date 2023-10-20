@@ -33,7 +33,9 @@ for j in yArray:
     else:
         yList.append(0)
 
-w, b = logisticRegression.fit(xFeature, yList, 0.01, 600)
+learningRate = 0.01
+iterations = 600
 
-print("\nAverage accuracy is {:.2f} % with k-fold".format(logisticRegression.kfold(5, w, b, xFeature, yList)))
+w, b = logisticRegression.fit(xFeature, yList, learningRate, iterations)
+print("\nAverage accuracy is {:.2f} % with k-fold".format(logisticRegression.kfold(5, w, b, xFeature, yList, learningRate, iterations)))
 
