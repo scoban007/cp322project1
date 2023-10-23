@@ -23,7 +23,7 @@ yArray = np.array(y)
 xFeature = []
 yList = []
 
-for i in range(250):    #dataset is huge (50k entries), only picked first 250
+for i in range(250):    #pick first 250 entries from dataset
     totalAttr = 0
     totalAttr += xArray[i][0] / 75
     totalAttr += xArray[i][2] / 450000
