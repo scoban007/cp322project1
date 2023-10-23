@@ -28,7 +28,6 @@ for j in yArray:
 
 
 sd = KNN.predicts(xArray, yList, xTest, 5)
-print(sd)
+
 temp_sd = KNN.temp_predicts(xArray, yList, xTest, 5)
-print(temp_sd)
-print(KNN.evaluate_acc(temp_sd, yList))
+
