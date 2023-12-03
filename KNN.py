@@ -6,7 +6,7 @@ import math
 import operator
 import random
 from collections import Counter
-ionosphere = fetch_ucirepo(id=52) 
+ionosphere = fetch_ucirepo(id=2) 
 X = ionosphere.data.features 
 y = ionosphere.data.targets
 
@@ -86,54 +86,4 @@ class KNN:
             avgAcc += KNN.evaluate_acc(predictions, testingSet_y)
 
         return avgAcc / k
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

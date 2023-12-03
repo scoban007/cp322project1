@@ -2,7 +2,7 @@ from ucimlrepo import fetch_ucirepo
 import matplotlib.pyplot as plt
 import numpy as np
 import math
-from KNN import KNN
+from KNNnew import KNN
 
 ionosphere = fetch_ucirepo(id=52) 
 x = ionosphere.data.features 
@@ -31,4 +31,4 @@ print(sd)
 temp_sd = KNN.temp_predicts(xArray, yList, xTest, 3) #needed for evaluating accuracy, this list contains the targets of K  closest neighbours to x
 #print(temp_sd)
 print(KNN.evaluate_acc(temp_sd, yList[0:3])) #get accuracy
-print("\nAverage accuracy is {:.2f} % with k-fold".format(KNN.kfold(xList, yList, 21, 3))) #not working...
+print("\nAverage accuracy is {:.2f} % with k-fold".format(KNN.kfold(xList, yList, 21, 3))) 
