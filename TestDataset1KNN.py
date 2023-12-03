@@ -28,4 +28,4 @@ print(sd)
 temp_sd = KNN.temp_predicts(xArray, yList, xTest, 3) #needed for evaluating accuracy, this list contains the targets of K  closest neighbours to x
 #print(temp_sd)
 print(KNN.evaluate_acc(temp_sd, yList[0:3])) #get accuracy
-#print("\nAverage accuracy is {:.2f} % with k-fold".format(KNN.kfold(xArray, yList, 21, 3))) #not working...
+#print("\nAverage accuracy is {:.2f} % with k-fold".format(KNN.kfold(xArray, yList, 21, 3))) 

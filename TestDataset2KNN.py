@@ -34,7 +34,5 @@ for j in range(250):
         yList.append(1)
 
 sd = KNN.predicts(xFeature, yList, xTest, 5)
-#print(sd)
 temp_sd = KNN.temp_predicts(xFeature, yList, xTest, 5)
-#print(temp_sd)
-#print(KNN.evaluate_acc(temp_sd, yList[:5]))
+
